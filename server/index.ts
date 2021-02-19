@@ -245,7 +245,7 @@ router.post('/message', async (req, res) => {
     const networkStr = network === 'testnet' ? 'demo.' : '';
     let message = `${msg.space} (${network})\n`;
     message += `**${msg.payload.name}**\n`;
-    message += `<https://${networkStr}snapshot.page/#/${msg.space}/proposal/${authorIpfsRes}>`;
+    message += `<https://${networkStr}hecovote.com/#/${msg.space}/proposal/${authorIpfsRes}>`;
     sendMessage(message);
   }
 
