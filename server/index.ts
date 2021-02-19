@@ -267,19 +267,19 @@ router.post('/message', async (req, res) => {
     }
   }
 
-  fetch('https://snapshot.collab.land/api', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      network,
-      body,
-      authorIpfsRes,
-      relayerIpfsRes
-    })
-  })
-    .then(res => res.json())
-    .then(json => console.log('Webhook success', json))
-    .catch(result => console.error('Webhook error', result));
+  // fetch('https://snapshot.collab.land/api', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({
+  //     network,
+  //     body,
+  //     authorIpfsRes,
+  //     relayerIpfsRes
+  //   })
+  // })
+  //   .then(res => res.json())
+  //   .then(json => console.log('Webhook success', json))
+  //   .catch(result => console.error('Webhook error', result));
 
   console.log(
     `Address "${body.address}"\n`,

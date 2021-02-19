@@ -1,7 +1,7 @@
 {
-  "name": "snapshot-hub",
+  "name": "hecovote-hub",
   "version": "0.1.3",
-  "repository": "balancer-labs/snapshot-hub",
+  "repository": "go-protocol/hecovote-hub",
   "license": "MIT",
   "scripts": {
     "lint": "vue-cli-service lint ./server/**/*.ts",
@@ -36,7 +36,7 @@
     "ethers": "^5.0.17",
     "frameguard": "^3.1.0",
     "hecovote-spaces": "github:go-protocol/hecovote-spaces#main",
-    "hecovote.js": "^0.1.6",
+    "hecovote.js": "^0.1.7",
     "lodash": "^4.17.20",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.1",
