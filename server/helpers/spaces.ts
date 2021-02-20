@@ -1,7 +1,8 @@
-import legacySpaces from 'hecovote-spaces';
+// import legacySpaces from 'hecovote-spaces';
 import { getActiveProposals, loadSpaces } from './adapters/mysql';
 
-export let spaces = legacySpaces;
+// export let spaces = legacySpaces;
+export let spaces;
 
 loadSpaces().then(ensSpaces => {
   spaces = { ...spaces, ...ensSpaces };
@@ -16,3 +17,4 @@ setInterval(() => {
     })
   );
 }, 30e3);
+

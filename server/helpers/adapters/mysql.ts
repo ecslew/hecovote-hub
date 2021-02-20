@@ -145,26 +145,37 @@ export async function loadSpaces() {
   return spaces;
 }
 
+export async function fleekGet(
+  address: string,
+  id: string
+) {
+  const url = 'https://fankouzu-team-bucket.storage.fleek.co/registry/'+address+'/'+id;
+  return fetch(url).then((res) => res.json());
+}
+
 export async function loadSpace(id) {
+  const query = `SELECT address FROM spaces WHERE id = ?`;
+  const result = await db.queryAsync(query, id);
   let space = false;
-  // const ts = (Date.now() / 1e3).toFixed();
+  // // const ts = (Date.now() / 1e3).toFixed();
   try {
-    const { protocolType, decoded } = await resolveContent(
-      snapshot.utils.getProvider('1'),
-      id
-    );
-    const key = decoded.replace(
-      'storage.hecovote.com',
-      'fankouzu-team-bucket.storage.fleek.co/'
-    );
-    const result = await snapshot.utils.ipfsGet(gateways[0], key, protocolType);
-    if (snapshot.utils.validateSchema(snapshot.schemas.space, result))
-      space = result;
+  //   const { protocolType, decoded } = await resolveContent(
+  //     snapshot.utils.getProvider('128'),
+  //     id
+  //   );
+  //   const key = decoded.replace(
+  //     'storage.hecovote.com',
+  //     'fankouzu-team-bucket.storage.fleek.co/'
+  //   );
+    // const result = await snapshot.utils.ipfsGet(gateways[0], key, protocolType);
+    const json = await fleekGet(result[0].address, id);
+    console.log('json space', json);
+    if (snapshot.utils.validateSchema(snapshot.schemas.space, json)) space = result;
     console.log('Load space', id);
   } catch (e) {
     console.log('Load space failed', id);
   }
-  return space;
+  return space
 }
 
 export async function resolveContent(provider, name) {
