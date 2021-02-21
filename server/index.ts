@@ -145,7 +145,7 @@ router.post('/message', async (req, res) => {
   )
     return sendError(res, 'wrong signature');
 
-  if (msg.type === 'delete-proposal') {
+  if (msg.type === 'delete-proposal' || msg.type === 'settings') {
     let query = `SELECT address FROM messages WHERE type = 'proposal' AND id = ?`;
     let propasalSigner = await db.queryAsync(query, [msg.payload.proposal]);
     if (propasalSigner[0].address !== body.address) {

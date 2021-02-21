@@ -36,7 +36,7 @@
     "ethers": "^5.0.17",
     "frameguard": "^3.1.0",
     "hecovote-spaces": "github:go-protocol/hecovote-spaces#main",
-    "hecovote.js": "^0.1.7",
+    "hecovote.js": "^0.1.20",
     "lodash": "^4.17.20",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.1",
