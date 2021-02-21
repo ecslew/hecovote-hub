@@ -258,7 +258,7 @@ router.post('/message', async (req, res) => {
     const query = 'SELECT address FROM spaces WHERE id = ?';
     let result = [];
     result = await db.queryAsync(query,[msg.space]);
-    if(result.length > 0 && result[0].address != body.address){
+    if(result.length > 0 && result[0].address.toLowerCase() != body.address.toLowerCase()){
       return sendError(res, 'wrong signer');
     }
     
