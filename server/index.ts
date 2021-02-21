@@ -145,7 +145,7 @@ router.post('/message', async (req, res) => {
   )
     return sendError(res, 'wrong signature');
 
-  if (msg.type === 'delete-proposal' || msg.type === 'settings') {
+  if (msg.type === 'delete-proposal') {
     let query = `SELECT address FROM messages WHERE type = 'proposal' AND id = ?`;
     let propasalSigner = await db.queryAsync(query, [msg.payload.proposal]);
     if (propasalSigner[0].address !== body.address) {
@@ -254,6 +254,14 @@ router.post('/message', async (req, res) => {
   }
 
   if (msg.type === 'settings') {
+
+    const query = 'SELECT address FROM spaces WHERE id = ?';
+    let result = [];
+    result = await db.queryAsync(query,[msg.space]);
+    if(result.length > 0 && result[0].address != body.address){
+      return sendError(res, 'wrong signer');
+    }
+    
     try {
       await storeSettings(msg.space, body);
       spaces[msg.space] = msg.payload;
