@@ -170,7 +170,7 @@ export async function loadSpace(id) {
     // const result = await snapshot.utils.ipfsGet(gateways[0], key, protocolType);
     const json = await fleekGet(result[0].address, id);
     console.log('json space', json);
-    if (snapshot.utils.validateSchema(snapshot.schemas.space, json)) space = result;
+    if (snapshot.utils.validateSchema(snapshot.schemas.space, json)) space = json;
     console.log('Load space', id);
   } catch (e) {
     console.log('Load space failed', id);
